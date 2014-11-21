@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Gigya in da place</title>
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="../../css/reveal.css">
+        <link rel="stylesheet" href="../../css/theme/default.css" id="theme">
+        <link rel="stylesheet" href="../../css/custom.css">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="../../lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                  <h1>Gigya in da place</h1>
+                  <h3>Pourquoi, comment & fonctionnalités</h3>
+                  <p>
+                    <img class="avatar rounded" src="images/gigya.jpg"/>
+                    <small>Morgan / Francois "Verron bien ce qu'y verron"</small>
+                  </p>
+                </section>
+
+                <section>
+                  <h2> Pourquoi être passé sur Gigya ?</h2>
+                </section>
+
+                <section data-background="images/explosion.gif">
+                  <h2 class="highlight">Le PAU n'a pas tenue la charge<br/> lors de l'émission QQJSV</h2>
+                </section>
+
+                <section>
+                  <h2>Pourquoi être passé sur Gigya ?</h2>
+                  <ul>
+                    <li>En prévision de Rising Star</li>
+                    <li>Externaliser la gestion des utilisateurs</li>
+                    <li>Besoin de collecter de la données dynamique en masse</li>
+                    <li>Intégrer facilement les réseaux sociaux</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>Pourquoi on s'en sert ?</h2>
+                  <ul>
+                    <li>Gestion de nos utilisateurs 6play (<a>user.6play.fr</a>)</li>
+                    <li>Authentication FCOM & FPER</li>
+                    <li>CRMisation (commandes d'export spécifiques <b></b>)</li>
+                    <li>Implémentation native SDK iOs/Android</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>Comment on s'en sert ?</h2>
+                  <ul>
+                    <li>Structure de données</li>
+                    <li>Console gigya</li>
+                    <li>SDK JavaScript</li>
+                    <li>SDK Natif</li>
+                    <li>API Rest-like</li>
+                    <li>Composant JavaScript maison</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <section>
+                    <h2>Structure de données</h2>
+                    <ul>
+                      <li>Plusieurs types de données :
+                        <ul>
+                          <li>Account (Profile & Data Schema)</li>
+                          <li>DataStore (définition de Schema personnalisés)</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h2>Structure de données</h2>
+                    <ul>
+                      <li>2 moyens de modifier Account :
+                        <ul>
+                          <li>API Rest <a>accounts.setSchema</a></li>
+                          <li>UI <a>tools.gigya-cs.com/schema</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </section>
+                </section>
+
+                <section>
+                  <h2>console.gigya.com</h2>
+                  <ul>
+                    <li>Dashboard</li>
+                    <li>Social Network Application</li>
+                    <li>Permissions</li>
+                    <li>UI Builder</li>
+                    <li>Identity Query Tool</li>
+                    <li>Consumer Insights</li>
+                    <li>Identity Access</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>SDK JavaScript</h2>
+                  <ul>
+                    <li>Utilisé pour la webview <a>user.6play.fr</a>
+                      <ul>
+                        <li>Gestion authentication FCOM & FPER</li>
+                        <li>Génération de l'UI avec UIBuilder
+                          <ul>
+                            <li>Pas optimum pour les interfaces personnalisées</li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>SDK Natif</h2>
+                  <ul>
+                    <li>Voir avec tapptic pour plus d'info ;)</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <section>
+                    <h2>API Rest</h2>
+                    <ul>
+                      <li>OAuth 2.0</li>
+                      <li>JSON / XML</li>
+                      <li>Récupération des données utilisateurs</li>
+                      <li>Nos commandes d'export utilise l'API</li>
+                      <li>Le component User utilise l'API</li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h2>API Rest : Export massif</h2>
+                    <ul>
+                      <li>API : <a>https://ids.gigya.com/ids.search</a></li>
+                      <li>Limit = 10 000</li>
+                      <li>Utiliser openCursor (retourne nextCursorId)</li>
+                      <li>Exemple : <a>service-user-wall :: UserManager</a></li>
+                    </ul>
+                  </section>
+                </section>
+
+                <section>
+                  <section>
+                    <h2>Composant JavaScript maison</h2>
+                    <ul>
+                      <li>Utilise l'API Gigya</li>
+                      <li>Multitude de projets
+                        <ul>
+                          <li>6play.fr</li>
+                          <li>Webview User</li>
+                          <li>Webview Voting</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h2>Composant Javascript maison</h2>
+                    <ul>
+                      <li>Customs fields</li>
+                      <li>Authentication</li>
+                      <li>Facebook connexion / partage</li>
+                    </ul>
+                  </section>
+                </section>
+
+                <section data-background="images/question.jpg">
+                  <h1 style="float: right">Questions ?</h1>
+                </section>
+
+              </div>
+
+        </div>
+
+        <script src="../../lib/js/head.min.js"></script>
+        <script src="../../js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: '../../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: '../../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '../../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: '../../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
